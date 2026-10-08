@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стандарты — EMC·LAB</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#05060a;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
+    --fg:#e8ecf1;--dim:#6b7480;--accent:#2b47ff;
+    --mono:'JetBrains Mono','SF Mono',ui-monospace,monospace;
+    --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+    --display:'Inter','Helvetica Neue',Arial,sans-serif;
+  }
+  html,body{background:var(--bg);color:var(--fg)}
+  body{font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .grid{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);
+    background-size:calc(100% / 12) 100%;}
+  .grid::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 70% 30%,rgba(43,71,255,.10),transparent 55%);}
+  .shell{position:relative;z-index:1;max-width:1560px;margin:0 auto;padding:0 40px}
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);background:rgba(5,6,10,.75);border-bottom:1px solid var(--line)}
+  .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:40px;padding:22px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+  .brand .glyph{width:22px;height:22px;border:1px solid var(--accent);position:relative}
+  .brand .glyph::before{content:"";position:absolute;inset:5px;background:var(--accent)}
+  .menu{display:flex;justify-content:center;gap:38px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+  .menu a{color:var(--dim);transition:color .2s}
+  .menu a:hover,.menu a.active{color:var(--fg)}
+  .menu a.active{position:relative}
+  .menu a.active::after{content:"";position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:1px;height:20px;background:var(--accent)}
+  .tools{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+  .tools .lang{display:flex;gap:8px}.tools .lang span.on{color:var(--fg)}
+  .tools .icon{width:22px;height:22px;border:1px solid var(--line-2);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:4px;gap:2px}
+  .tools .icon i{width:2px;height:2px;background:var(--fg);display:block}
+
+  .page-head{padding:80px 0 50px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--fg);position:relative;padding-left:22px;margin-bottom:30px}
+  .kicker::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent)}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:.02em;text-transform:uppercase;line-height:1;font-size:clamp(48px,7vw,108px)}
+  h1 .block{display:inline-block;background:var(--accent);color:#fff;padding:2px 14px 6px}
+  h1 .out{color:transparent;-webkit-text-stroke:1.4px var(--fg)}
+  .page-head p{margin-top:28px;color:#b8bfc8;max-width:620px;font-size:15px;position:relative;padding-left:22px}
+  .page-head p::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line-2)}
+
+  .block{padding:60px 0;border-bottom:1px solid var(--line)}
+  .block h2{font-family:var(--display);font-weight:800;letter-spacing:.02em;text-transform:uppercase;line-height:1;font-size:clamp(26px,3.4vw,44px);margin-bottom:24px}
+  .block h2 .accent{color:var(--accent)}
+  .block h2 .thin{color:var(--dim);font-weight:300}
+
+  .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--line-2);border-left:1px solid var(--line-2)}
+  .cell{border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:26px 22px;transition:background .18s}
+  .cell:hover{background:rgba(43,71,255,.05)}
+  .cell .num{display:block;color:var(--accent);font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;margin-bottom:16px}
+  .cell h3{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:.06em;line-height:1.1;text-transform:uppercase;margin-bottom:10px}
+  .cell p{color:#9aa3ae;font-size:13.5px}
+
+  table.brut{width:100%;border-collapse:collapse;margin-top:20px;font-size:13.5px}
+  table.brut th,table.brut td{border-bottom:1px solid var(--line);padding:15px 12px;text-align:left;vertical-align:top}
+  table.brut th{color:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--line-2)}
+  table.brut tr:hover td{background:rgba(255,255,255,.02)}
+  table.brut td:first-child{color:var(--accent);font-family:var(--mono);font-size:11.5px;white-space:nowrap;letter-spacing:.04em}
+  table.brut td:last-child{color:#9aa3ae;font-size:13px}
+
+  .flow{list-style:none;margin-top:20px}
+  .flow li{padding:14px 0 14px 30px;border-bottom:1px dashed var(--line);position:relative;color:#b8bfc8;font-size:14.5px}
+  .flow li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:13px;top:16px}
+
+  .alert{border:1px solid var(--accent);background:rgba(43,71,255,.10);padding:22px 26px;margin:26px 0;font-size:14.5px;color:#cfd6e0}
+  .alert b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:8px;color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);margin-top:60px;padding:26px 0 40px;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--dim);text-transform:uppercase}
+  footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer b{color:var(--fg);font-weight:500}
+
+  @media (max-width:1080px){.shell{padding:0 24px}.menu{display:none}table.brut{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="grid"></div>
+
+<header>
+  <div class="shell topbar">
+    <a href="index.html" class="brand"><span class="glyph"></span><span>EMC·LAB</span></a>
+    <nav class="menu">
+      <a href="index.html">Главная</a>
+      <a href="about.html">ЭМС</a>
+      <a href="services.html" class="active">Стандарты</a>
+      <a href="process.html">Методики</a>
+      <a href="contacts.html">Заметки</a>
+    </nav>
+    <div class="tools">
+      <div class="lang"><span class="on">RU</span><span>/</span><span>EN</span></div>
+      <div class="icon"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <section class="page-head">
+    <div class="kicker">Раздел 02 · Иерархия</div>
+    <h1><span class="block">СТАН</span><span class="out">ДАР</span><span>ТЫ</span></h1>
+    <p>Стандарты по ЭМС — это не плоский список. Это четыре уровня, где нижний ссылается на верхний. Понять структуру важнее, чем заучить номера.</p>
+  </section>
+
+  <section class="block">
+    <h2>Четыре <span class="accent">уровня</span></h2>
+    <div class="grid4">
+      <div class="cell"><span class="num">// LVL 01</span><h3>Базовые</h3><p>IEC 61000-4-х. Методы испытаний и требования к оборудованию. Не привязаны к продукции.</p></div>
+      <div class="cell"><span class="num">// LVL 02</span><h3>Общие</h3><p>IEC 61000-6-х. Требования для групп условий: жилые, коммерческие, промышленные.</p></div>
+      <div class="cell"><span class="num">// LVL 03</span><h3>Групповые</h3><p>CISPR 14, CISPR 22, CISPR 15. Требования для целых категорий продукции.</p></div>
+      <div class="cell"><span class="num">// LVL 04</span><h3>Видовые</h3><p>IEC 60601-1-2 для медицины и аналогичные. Учитывают специфику вида оборудования.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Стандарты <span class="accent">по эмиссии</span></h2>
+    <table class="brut">
+      <tr><th>Обозначение</th><th>Область</th><th>Что нормирует</th></tr>
+      <tr><td>ГОСТ CISPR 14-1</td><td>Бытовые приборы, электроинструмент</td><td>Кондуктивные и излучаемые помехи</td></tr>
+      <tr><td>ГОСТ CISPR 14-2</td><td>Бытовые приборы, электроинструмент</td><td>Помехоустойчивость</td></tr>
+      <tr><td>ГОСТ CISPR 22</td><td>Информационное оборудование</td><td>Эмиссия помех</td></tr>
+      <tr><td>ГОСТ CISPR 15</td><td>Осветительное оборудование</td><td>Радиопомехи от светильников</td></tr>
+      <tr><td>ГОСТ IEC 61000-3-2</td><td>Питание, ≤16 А на фазу</td><td>Гармонические токи</td></tr>
+      <tr><td>ГОСТ IEC 61000-3-3</td><td>Питание, ≤16 А на фазу</td><td>Колебания напряжения и фликер</td></tr>
+    </table>
+  </section>
+
+  <section class="block">
+    <h2>Стандарты <span class="accent">по помехоустойчивости</span></h2>
+    <table class="brut">
+      <tr><th>Стандарт</th><th>Воздействие</th><th>Уровни / детали</th></tr>
+      <tr><td>61000-4-2</td><td>ESD</td><td>Контакт до 4–6 кВ, воздух до 8–15 кВ</td></tr>
+      <tr><td>61000-4-3</td><td>RF-поле</td><td>3–10 В/м (спец. до 30 В/м), 80 МГц – 6 ГГц</td></tr>
+      <tr><td>61000-4-4</td><td>EFT / burst</td><td>до 2–4 кВ на питании и линиях</td></tr>
+      <tr><td>61000-4-5</td><td>Surge</td><td>до 1–4 кВ, 1,2/50 мкс и 8/20 мкс</td></tr>
+      <tr><td>61000-4-6</td><td>Conducted RF</td><td>1–10 В, 0,15–80 МГц</td></tr>
+      <tr><td>61000-4-8</td><td>MF-поле</td><td>1–30 А/м, 50/60 Гц</td></tr>
+      <tr><td>61000-4-11</td><td>Dips / прерывания</td><td>0 / 40 / 70 % Uном, 0,5–250 периодов</td></tr>
+      <tr><td>61000-4-13</td><td>Гармоники в сети</td><td>Спец. уровни для каждой гармоники</td></tr>
+      <tr><td>61000-4-14</td><td>Колебания напряжения</td><td>±8 % и более</td></tr>
+    </table>
+  </section>
+
+  <section class="block">
+    <h2>Куда всё <span class="accent">сходится</span>: ТР ТС 020/2011</h2>
+    <p style="color:#b8bfc8;margin-bottom:14px">Технический регламент Таможенного союза 020/2011 «Электромагнитная совместимость технических средств» — обязателен для продукции, обращаемой на рынке ЕАЭС. Он не содержит конкретных уровней, а ссылается на перечень стандартов.</p>
+    <ul class="flow">
+      <li>ГОСТ CISPR 14-1 / 14-2 — бытовые приборы и электроинструмент</li>
+      <li>ГОСТ CISPR 22 — информационное оборудование</li>
+      <li>ГОСТ IEC 61000-3-2 / 3-3 — гармоники и колебания напряжения</li>
+      <li>серия ГОСТ IEC 61000-4-х — методы испытаний на помехоустойчивость</li>
+    </ul>
+  </section>
+
+  <div class="alert">
+    <b>Практическое</b>
+    Перед подготовкой к испытаниям всегда проверяйте актуальную редакцию стандарта и действующий перечень к ТР ТС 020/2011. Редакции и перечни обновляются.
+  </div>
+
+</div>
+
+<footer>
+  <div class="shell">
+    <div><b>EMC·LAB</b> · личный инженерный журнал · 2026</div>
+    <div>Раздел 02 / Стандарты</div>
+  </div>
+</footer>
+</body>
+</html>
