@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Испытательная лаборатория | Главная</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background-color: #1a3c5e; color: white; padding: 20px 0; text-align: center; }
+        nav { background-color: #2c5a85; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #1a3c5e; }
+        .hero { text-align: center; margin-bottom: 30px; }
+        .hero img { max-width: 100%; height: auto; border-radius: 5px; }
+        footer { text-align: center; padding: 20px; background-color: #1a3c5e; color: white; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Испытательная лаборатория</h1>
+        <p>Испытания бытовых приборов (020 ТР ТС) и медицинских изделий</p>
+    </header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="about.html">О лаборатории</a>
+        <a href="services.html">Услуги</a>
+        <a href="process.html">Процесс</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="container">
+        <div class="hero">
+            <h2>Добро пожаловать!</h2>
+            <p>Мы проводим профессиональные испытания бытовых приборов на соответствие техническому регламенту Таможенного союза 020/2011 «Электромагнитная совместимость технических средств» и испытания медицинских изделий на безопасность и эффективность.</p>
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Лаборатория">
+        </div>
+        <h2>Почему выбирают нас?</h2>
+        <ul>
+            <li>Аккредитованная лаборатория с современным оборудованием.</li>
+            <li>Опыт работы более 10 лет.</li>
+            <li>Соблюдение сроков и прозрачность отчетности.</li>
+            <li>Полный цикл испытаний: от заявки до выдачи протокола.</li>
+        </ul>
+    </div>
+    <footer>
+        &copy; 2026 Испытательная лаборатория. Все права защищены.
+        <!-- Сюда мы позже вставим код счетчика LiveInternet -->
+    </footer>
+</body>
+</html>

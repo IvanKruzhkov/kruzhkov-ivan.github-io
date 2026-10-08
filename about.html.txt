@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>О лаборатории</title>
+    <style>
+        /* Вставьте сюда те же стили, что и в index.html, чтобы не дублировать код. 
+           Для простоты скопируйте стили из index.html в каждый файл. */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background-color: #1a3c5e; color: white; padding: 20px 0; text-align: center; }
+        nav { background-color: #2c5a85; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #1a3c5e; }
+        footer { text-align: center; padding: 20px; background-color: #1a3c5e; color: white; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>О нашей лаборатории</h1>
+    </header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="about.html">О лаборатории</a>
+        <a href="services.html">Услуги</a>
+        <a href="process.html">Процесс</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="container">
+        <h2>Наша миссия</h2>
+        <p>Обеспечение безопасности и качества продукции на рынке Таможенного союза. Мы помогаем производителям и импортерам подтверждать соответствие их товаров строгим требованиям технических регламентов.</p>
+        
+        <h2>Оборудование</h2>
+        <p>Наша лаборатория оснащена современными климатическими камерами, вибростендами, анализаторами электромагнитной совместимости и оборудованием для испытаний медицинской техники.</p>
+        
+        <h2>Команда</h2>
+        <p>В штате работают сертифицированные инженеры-испытатели с многолетним опытом работы в области метрологии и стандартизации.</p>
+    </div>
+    <footer>
+        &copy; 2026 Испытательная лаборатория. Все права защищены.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Процесс испытаний</title>
+    <style>
+        /* Скопируйте стили */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background-color: #1a3c5e; color: white; padding: 20px 0; text-align: center; }
+        nav { background-color: #2c5a85; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #1a3c5e; }
+        ol { line-height: 1.8; }
+        footer { text-align: center; padding: 20px; background-color: #1a3c5e; color: white; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Как проходит испытание</h1>
+    </header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="about.html">О лаборатории</a>
+        <a href="services.html">Услуги</a>
+        <a href="process.html">Процесс</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="container">
+        <h2>Этапы сотрудничества</h2>
+        <ol>
+            <li><strong>Заявка:</strong> Вы оставляете заявку на сайте или по телефону, мы обсуждаем объем испытаний.</li>
+            <li><strong>Договор:</strong> Заключаем договор и согласовываем стоимость и сроки.</li>
+            <li><strong>Предоставление образцов:</strong> Вы передаете нам образцы продукции для испытаний.</li>
+            <li><strong>Проведение испытаний:</strong> Наши инженеры проводят необходимые тесты в соответствии с регламентами.</li>
+            <li><strong>Протокол испытаний:</strong> Вы получаете официальный протокол, действительный для оформления декларации или сертификата.</li>
+        </ol>
+    </div>
+    <footer>
+        &copy; 2026 Испытательная лаборатория. Все права защищены.
+    </footer>
+</body>
+</html>
